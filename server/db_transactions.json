@@ -1,0 +1,28 @@
+{
+  "transactions": [
+    {
+      "name": "Pendrive",
+      "amount": "500",
+      "type": "expense",
+      "id": 3
+    },
+    {
+      "name": "Salary",
+      "type": "income",
+      "amount": 20000,
+      "id": 4
+    },
+    {
+      "name": "Income",
+      "amount": 20000,
+      "type": "income",
+      "id": 5
+    },
+    {
+      "name": "House Rent",
+      "type": "expense",
+      "amount": 13000,
+      "id": 6
+    }
+  ]
+}
