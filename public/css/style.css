@@ -192,14 +192,34 @@ label {
   background-color: #008667;
   color: white;
 }
-
+.search {
+  width: 300px;
+  padding: 8px;
+}
+.s-btn {
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #008667;
+  color: white;
+  margin-left: 5px;
+}
 .show {
   display: block;
 }
 .none {
   display: none;
 }
-
+.s-all {
+  padding: 10px;
+  border: 1px solid lightgray;
+  margin-bottom: 25px;
+}
+.a-c {
+  min-width: 400px;
+  margin-top: 25px;
+}
 @media (max-width: 450px) {
   .top_card,
   .form {

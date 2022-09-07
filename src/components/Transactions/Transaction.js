@@ -2,18 +2,18 @@ import { useDispatch } from "react-redux";
 import deleteImage from "../../assets/images/delete.svg";
 import editImage from "../../assets/images/edit.svg";
 import {
-    editActive,
-    removeTransaction
+  editActive,
+  removeTransaction
 } from "../../features/transaction/transactionSlice";
 import numberWithCommas from "../../utils/numberWithCommas";
 
-export default function Transaction({ transaction, isEdit }) {
+export default function Transaction({ transaction }) {
   const { name, amount, type, id } = transaction || {};
   const dispatch = useDispatch();
 
   const handleEdit = () => {
     dispatch(editActive(transaction));
-    isEdit();
+    
   };
 
   const handleDelete = () => {
