@@ -23,7 +23,7 @@ export default function Transactions() {
     content = <p className="error">There was an error occured</p>;
 
   if (!isLoading && !isError && transactions?.length > 0) {
-    content = transactions.map((transaction) => (
+    content = transactions.slice(0,5).map((transaction) => (
       <Transaction key={transaction.id} transaction={transaction} />
     ));
   }
