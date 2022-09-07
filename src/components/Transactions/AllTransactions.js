@@ -13,12 +13,8 @@ import Layout from "../Layout";
 import Transaction from "./Transaction";
 
 const AllTransactions = () => {
-  const [edit, setEdit] = useState(false);
-  const [search, setSearch] = useState(false);
+  const [search, setSearch] = useState("");
 
-  const isEdit = () => {
-    setEdit(!edit);
-  };
   const { editing, filters, searches } =
     useSelector((state) => state.transaction) || {};
   console.log(searches);
@@ -66,11 +62,7 @@ const AllTransactions = () => {
         }
       })
       .map((transaction) => (
-        <Transaction
-          key={transaction.id}
-          transaction={transaction}
-          isEdit={isEdit}
-        />
+        <Transaction key={transaction.id} transaction={transaction} />
       ));
   }
 
@@ -100,7 +92,7 @@ const AllTransactions = () => {
             type="radio"
             value="All"
             name="type"
-            //checked={(filters & searches) === "All"}
+            checked={filters === "All"}
             onChange={(e) => filterData("All")}
           />
           <label>All</label>
