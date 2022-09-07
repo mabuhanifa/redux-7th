@@ -177,7 +177,6 @@ label {
 }
 
 .conatiner_of_list_of_transactions ul {
-  max-height: 500px;
   overflow-y: auto;
 }
 
@@ -193,6 +192,14 @@ label {
   background-color: #008667;
   color: white;
 }
+
+.show {
+  display: block;
+}
+.none {
+  display: none;
+}
+
 @media (max-width: 450px) {
   .top_card,
   .form {

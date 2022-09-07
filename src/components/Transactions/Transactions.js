@@ -20,7 +20,7 @@ export default function Transactions() {
   if (isLoading) content = <p>Loading...</p>;
 
   if (!isLoading && isError)
-    content = <p className="error">There was an error occured</p>;
+    content = <p className="error">There was an error occurred</p>;
 
   if (!isLoading && !isError && transactions?.length > 0) {
     content = data
