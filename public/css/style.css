@@ -220,6 +220,16 @@ label {
   min-width: 400px;
   margin-top: 25px;
 }
+
+.clear button {
+  padding: 10px 25px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  background-color: #ff1e1e;
+  color: white;
+  margin-bottom: 20px;
+}
 @media (max-width: 450px) {
   .top_card,
   .form {

@@ -12,6 +12,7 @@ const initialState = {
   isError: false,
   error: "",
   filters: "All",
+  searches: "All",
   editing: {},
 };
 
@@ -61,6 +62,13 @@ const transactionSlice = createSlice({
     },
     filterBy: (state, action) => {
       state.filters = action.payload;
+    },
+    searchBy: (state, action) => {
+      state.searches = action.payload;
+    },
+    clearAll: (state, action) => {
+      state.searches = "All";
+      state.filters = "All";
     },
   },
   extraReducers: (builder) => {
@@ -135,4 +143,5 @@ const transactionSlice = createSlice({
 });
 
 export default transactionSlice.reducer;
-export const { editActive, editInActive, filterBy } = transactionSlice.actions;
+export const { editActive, editInActive, filterBy, searchBy, clearAll } =
+  transactionSlice.actions;
