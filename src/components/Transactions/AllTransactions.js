@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import ReactPaginate from "react-paginate";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import {
@@ -13,17 +14,22 @@ import Layout from "../Layout";
 import Transaction from "./Transaction";
 
 const AllTransactions = () => {
-  const [search, setSearch] = useState("");
-
   const { editing, filters, searches } =
     useSelector((state) => state.transaction) || {};
-  console.log(searches);
-  const dispatch = useDispatch();
-
   const { transactions, isLoading, isError } = useSelector(
     (state) => state.transaction
   );
-
+  const dispatch = useDispatch();
+  const [search, setSearch] = useState("");
+  const [pageNumber, setPageNumber] = useState(0);
+  const perPage = 10;
+  const pagesVisited = pageNumber * perPage;
+  const displayData = transactions.slice(pagesVisited, pagesVisited + perPage);
+  const pageCount = Math.ceil(transactions.length / perPage);
+  console.log( displayData,pageCount);
+  const handlePageClick = ({ selected }) => {
+    setPageNumber(selected);
+  };
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);
@@ -38,6 +44,7 @@ const AllTransactions = () => {
     dispatch(clearAll());
     setSearch("");
   };
+
   //decide what to render
   let content = null;
   if (isLoading) content = <p>Loading...</p>;
@@ -46,7 +53,7 @@ const AllTransactions = () => {
     content = <p className="error">There was an error occurred</p>;
 
   if (!isLoading && !isError && transactions?.length > 0) {
-    content = transactions
+    content = displayData
       .filter((t) => {
         if (filters === "All") {
           return t;
@@ -137,6 +144,14 @@ const AllTransactions = () => {
       <Link to={"/"}>
         <button className="show-all">Go Back</button>
       </Link>
+      <ReactPaginate
+        previousLabel={"Previous"}
+        nextLabel={"Next"}
+        pageCount={pageCount}
+        onPageChange={handlePageClick}
+        containerClassName={"containerClassName"}
+        activeClassName={"activeClassName"}
+      />
     </Layout>
   );
 };

@@ -230,6 +230,19 @@ label {
   color: white;
   margin-bottom: 20px;
 }
+
+.containerClassName {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  margin-top: 25px;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.activeClassName {
+  color: rgb(50, 50, 252);
+}
 @media (max-width: 450px) {
   .top_card,
   .form {
