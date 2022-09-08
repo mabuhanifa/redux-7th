@@ -22,11 +22,16 @@ const AllTransactions = () => {
   const dispatch = useDispatch();
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
-  const perPage = 10;
+
+  // set poet per page
+  const postPerPage = 10; 
+
+  const perPage = filters === "All" ? postPerPage : postPerPage * 2;
+
   const pagesVisited = pageNumber * perPage;
   const displayData = transactions.slice(pagesVisited, pagesVisited + perPage);
   const pageCount = Math.ceil(transactions.length / perPage);
-  console.log( displayData,pageCount);
+  console.log(pagesVisited, pageCount);
   const handlePageClick = ({ selected }) => {
     setPageNumber(selected);
   };
@@ -52,7 +57,7 @@ const AllTransactions = () => {
   if (!isLoading && isError)
     content = <p className="error">There was an error occurred</p>;
 
-  if (!isLoading && !isError && transactions?.length > 0) {
+  if (!isLoading && !isError && displayData?.length > 0) {
     content = displayData
       .filter((t) => {
         if (filters === "All") {
@@ -73,11 +78,12 @@ const AllTransactions = () => {
       ));
   }
 
-  if (!isLoading && !isError && transactions?.length === 0) {
+  if (!isLoading && !isError && displayData?.length === 0) {
     content = <p>No transactions found!</p>;
   }
   return (
     <Layout>
+      <Balance />
       <div className="a-c">
         <form onSubmit={searchData}>
           <input
@@ -131,7 +137,6 @@ const AllTransactions = () => {
         </div>
       </div>
 
-      <Balance />
       <div className={editing?.id ? "show" : "none"}>
         <Form />
       </div>
