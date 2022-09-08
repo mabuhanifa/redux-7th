@@ -23,7 +23,7 @@ const AllTransactions = () => {
   const [search, setSearch] = useState("");
   const [pageNumber, setPageNumber] = useState(0);
 
-  // set poet per page
+  // set post per page
   const postPerPage = 10; 
 
   const perPage = filters === "All" ? postPerPage : postPerPage * 2;
