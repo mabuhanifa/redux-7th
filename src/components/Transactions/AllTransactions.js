@@ -24,14 +24,14 @@ const AllTransactions = () => {
   const [pageNumber, setPageNumber] = useState(0);
 
   // set post per page
-  const postPerPage = 10; 
+  const postPerPage = 10;
 
   const perPage = filters === "All" ? postPerPage : postPerPage * 2;
 
   const pagesVisited = pageNumber * perPage;
   const displayData = transactions.slice(pagesVisited, pagesVisited + perPage);
   const pageCount = Math.ceil(transactions.length / perPage);
-  console.log(pagesVisited, pageCount);
+
   const handlePageClick = ({ selected }) => {
     setPageNumber(selected);
   };
